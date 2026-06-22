@@ -228,3 +228,12 @@ DELETE FROM Customers
 where CustomerID = 102;
 
 select * from Customers;
+
+
+
+
+
+
+
+
+
