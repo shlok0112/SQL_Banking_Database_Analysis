@@ -49,5 +49,38 @@ LIMIT 3;
 Select * from Transactions
 LIMIT 5 OFFSET 2;
 
+USE BankingDB;
 
+INSERT INTO Customers
+(CustomerID, Firstname, Lastname, Email, AccountcreationDate, DateofBirth)
+VALUES
+(108, 'Shlok', 'Khandagale', 'shlok.khandagale@gmail.com', '2025-12-01', '2006-09-01');
 
+Select * from Customers
+Where Phone IS NULL;
+
+Select * from Customers
+Where Email IS NOT NULL;
+
+Select AccountID, Balance,
+CASE
+When Balance >= 50000 then 'Premium Account'
+When Balance >= 20000 then 'Standard Account'
+ELSE 'Basic Account'
+END AS AccountCategory
+FROM Accounts;
+
+Select AccountID,
+Balance,
+RANK() OVER (ORDER BY Balance) AS BalanceRank
+FROM Accounts;
+
+SELECT TransactionID,
+Amount,
+SUM(Amount) OVER (ORDER BY TransactionDate) AS RunningTotal
+FROM Transactions;
+
+SELECT TransactionID,
+Amount,
+AVG(Amount) OVER () AS AverageTransaction
+FROM Transactions;
