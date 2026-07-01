@@ -102,6 +102,9 @@ WHERE TransactionID = 309;
 SELECT * 
 FROM Transactions_2;
 
+SELECT * 
+FROM Customers2;
+
 SELECT 
     c.CustomerID,
     CONCAT(c.FirstName, ' ', c.LastName) AS CustomerName,
@@ -115,3 +118,6 @@ INNER JOIN Transactions_2 t
 WHERE t.TransactionType = 'Deposit'
   AND t.Amount > 50000
 ORDER BY t.Amount DESC;
+
+Select avg(Amount) As Average_amount From Transactions_2;
+
